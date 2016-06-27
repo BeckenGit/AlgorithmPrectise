@@ -3,10 +3,18 @@
 #include "leet_solutions.h"
 
 int main() {
-	char* tStr = "4, 2, 7, 1, 3, 6, 9";
-	struct TreeNode* root = CreateTreeNode(tStr);
-	LevelOrder(root);
-	root = invertTree(root);
-	LevelOrder(root);
-	return 0;
+	int nums1[4] = {1, 2, 2, 1};
+	int nums1Size = 4;
+
+	int nums2[2] = {2, 2};
+	int nums2Size = 2;
+
+	printArray(nums1, nums1Size);
+	printArray(nums2, nums2Size);
+
+	int* returnSize;
+
+	int* returnNums = intersection(nums1, nums1Size, nums2, nums2Size, returnSize)
+
+	printArray(returnNums, *returnSize);
 }

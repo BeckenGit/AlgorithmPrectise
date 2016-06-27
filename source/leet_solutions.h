@@ -6,3 +6,7 @@ void moveZeroes(int* nums, int numsSize);
 
 //Solution: 226. Invert Binary Tree
 struct TreeNode* invertTree(struct TreeNode* root);
+
+//Solution: 349. Intersection of Two Arrays
+int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize);
+bool isExisted(int num, int* nums, int numsSize);
