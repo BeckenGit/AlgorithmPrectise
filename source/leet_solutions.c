@@ -85,21 +85,22 @@ struct TreeNode* invertTree(struct TreeNode* root) {
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
   int i;
   *returnSize = 0;
-  int* returnNums = (int*)malloc(sizeof(int*)*(*returnSize));
+  int* returnNums = (int*)malloc(sizeof(int)*(*returnSize));
   for(i = 0; i < nums1Size; i++){
     if(isExisted(nums1[i], nums2, nums2Size) && !isExisted(nums1[i], returnNums, *returnSize)){
-      *returnSize++;
-      returnNums = (int*)realloc(returnNums, sizeof(int*)*(*returnSize));
+      (*returnSize)++;
+      returnNums = (int*)realloc(returnNums, sizeof(int)*(*returnSize));
       returnNums[*returnSize - 1] = nums1[i];
     }
   }
+  return returnNums;
 }
 
-bool isExisted(int num, int* nums, int numsSize){
+int isExisted(int num, int* nums, int numsSize){
   int i;
   for(i = 0; i < numsSize; i++){
     if(num == nums[i])
-      return true;
+      return 1;
   }
-  return false;
+  return 0;
 }

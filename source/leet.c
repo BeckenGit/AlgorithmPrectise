@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <malloc.h>
 #include "leet_lib.h"
 #include "leet_solutions.h"
 
@@ -12,9 +13,10 @@ int main() {
 	printArray(nums1, nums1Size);
 	printArray(nums2, nums2Size);
 
-	int* returnSize;
-
-	int* returnNums = intersection(nums1, nums1Size, nums2, nums2Size, returnSize)
+	int* returnSize = (int*)malloc(sizeof(int));
+	int* returnNums = intersection(nums1, nums1Size, nums2, nums2Size, returnSize);
 
 	printArray(returnNums, *returnSize);
+
+	return 0;
 }
