@@ -43,3 +43,31 @@ int maxDepth(struct TreeNode *root){
      }
    }
  }
+
+
+ /*
+  * Solution: 226. Invert Binary Tree
+  * Description: Invert a binary tree.
+        4
+      /   \
+     2     7
+    / \   / \
+   1   3 6   9
+   to
+        4
+      /   \
+     7     2
+    / \   / \
+   9   6 3   1
+  */
+struct TreeNode* invertTree(struct TreeNode* root) {
+  if(root != NULL){
+    struct TreeNode* tTemp;
+    tTemp = root -> left;
+    root -> left = root -> right;
+    root -> right = tTemp;
+    invertTree(root -> left);
+    invertTree(root -> right);
+  }
+  return root;
+}

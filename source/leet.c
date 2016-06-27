@@ -3,10 +3,10 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[] = {1, 2, 3, 4};
-	int numsSize = 4;
-	printArray(nums, numsSize);
-	moveZeroes(nums, numsSize);
-	printArray(nums, numsSize);
-  return 0;
+	char* tStr = "4, 2, 7, 1, 3, 6, 9";
+	struct TreeNode* root = CreateTreeNode(tStr);
+	LevelOrder(root);
+	root = invertTree(root);
+	LevelOrder(root);
+	return 0;
 }
