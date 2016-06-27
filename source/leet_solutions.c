@@ -30,6 +30,8 @@ int maxDepth(struct TreeNode *root){
    it while maintaining the relative order of the non-zero elements.
  * Example: Given nums = [0, 1, 0, 3, 12], after calling your function, nums
    should be [1, 3, 12, 0, 0].
+ * Author: Becken
+ * Date: 2016-6-26
  */
  void moveZeroes(int* nums, int numsSize) {
    int nextNonZero = 0;
@@ -61,6 +63,8 @@ int maxDepth(struct TreeNode *root){
      7     2
     / \   / \
    9   6 3   1
+  * Author: Becken
+  * Date: 2016-6-27
   */
 struct TreeNode* invertTree(struct TreeNode* root) {
   if(root != NULL){
@@ -79,8 +83,10 @@ struct TreeNode* invertTree(struct TreeNode* root) {
  * Solution: 349. Intersection of Two Arrays
  * Description: Given two arrays, write a function to compute their intersection.
  * Example: Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2].
- * Note: Each element in the result must be unique.
-         The result can be in any order.
+ * Note: 1. Each element in the result must be unique.
+         2. The result can be in any order.
+ * Author: Becken
+ * Date: 2016-6-27
  */
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
   int i;
@@ -103,4 +109,28 @@ int isExisted(int num, int* nums, int numsSize){
       return 1;
   }
   return 0;
+}
+
+/**
+ * Solution: 350. Intersection of Two Arrays II
+ * Description: Given two arrays, write a function to compute their intersection.
+ * Example: Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2, 2].
+ * Note: 1. Each element in the result should appear as many times as it shows
+   in both arrays.
+         2. The result can be in any order.
+ * Author: Becken
+ * Date: 2016-6-28
+ */
+int* intersection2(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
+  int i;
+  *returnSize = 0;
+  int* returnNums = (int*)malloc(sizeof(int)*(*returnSize));
+  for(i = 0; i < nums1Size; i++){
+    if(isExisted(nums1[i], nums2, nums2Size) && !isExisted(nums1[i], returnNums, *returnSize)){
+      (*returnSize)++;
+      returnNums = (int*)realloc(returnNums, sizeof(int)*(*returnSize));
+      returnNums[*returnSize - 1] = nums1[i];
+    }
+  }
+  return returnNums;
 }

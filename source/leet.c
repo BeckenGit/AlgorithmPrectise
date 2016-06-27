@@ -14,7 +14,7 @@ int main() {
 	printArray(nums2, nums2Size);
 
 	int* returnSize = (int*)malloc(sizeof(int));
-	int* returnNums = intersection(nums1, nums1Size, nums2, nums2Size, returnSize);
+	int* returnNums = intersection2(nums1, nums1Size, nums2, nums2Size, returnSize);
 
 	printArray(returnNums, *returnSize);
 
