@@ -122,14 +122,16 @@ int isExisted(int num, int* nums, int numsSize){
  * Date: 2016-6-28
  */
 int* intersection2(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
-  int i;
+  int i, j;
   *returnSize = 0;
   int* returnNums = (int*)malloc(sizeof(int)*(*returnSize));
   for(i = 0; i < nums1Size; i++){
-    if(isExisted(nums1[i], nums2, nums2Size) && !isExisted(nums1[i], returnNums, *returnSize)){
-      (*returnSize)++;
-      returnNums = (int*)realloc(returnNums, sizeof(int)*(*returnSize));
-      returnNums[*returnSize - 1] = nums1[i];
+    for(j = 0; j < nums2Size; j++){
+      if(nums1[i] == nums2[j]){
+        (*returnSize)++;
+        returnNums = (int*)realloc(returnNums, sizeof(int)*(*returnSize));
+        returnNums[*returnSize - 1] = nums1[i];
+      }
     }
   }
   return returnNums;
