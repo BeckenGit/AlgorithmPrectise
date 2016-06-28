@@ -121,16 +121,24 @@ int isExisted(int num, int* nums, int numsSize){
  * Author: Becken
  * Date: 2016-6-28
  */
-int* intersection2(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
+#define MAXNUM 100000
+int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
   int i, j;
+  int num_index_ij[MAXNUM][2];
+  for(i = 0; i < MAXNUM; i++){
+    num_index_ij[i][0] = -1;
+    num_index_ij[i][1] = -1;
+  }
   *returnSize = 0;
   int* returnNums = (int*)malloc(sizeof(int)*(*returnSize));
   for(i = 0; i < nums1Size; i++){
     for(j = 0; j < nums2Size; j++){
-      if(nums1[i] == nums2[j]){
+      if(nums1[i] == nums2[j] && i > num_index_ij[nums1[i]][0] && j > num_index_ij[nums1[i]][1]){
         (*returnSize)++;
         returnNums = (int*)realloc(returnNums, sizeof(int)*(*returnSize));
         returnNums[*returnSize - 1] = nums1[i];
+        num_index_ij[nums1[i]][0] = i;
+        num_index_ij[nums1[i]][1] = j;
       }
     }
   }

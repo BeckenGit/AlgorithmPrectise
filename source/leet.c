@@ -7,14 +7,14 @@ int main() {
 	int nums1[4] = {1, 2, 2, 1};
 	int nums1Size = 4;
 
-	int nums2[2] = {2, 2};
+	int nums2[2] = {3, 2};
 	int nums2Size = 2;
 
 	printArray(nums1, nums1Size);
 	printArray(nums2, nums2Size);
 
 	int* returnSize = (int*)malloc(sizeof(int));
-	int* returnNums = intersection2(nums1, nums1Size, nums2, nums2Size, returnSize);
+	int* returnNums = intersect(nums1, nums1Size, nums2, nums2Size, returnSize);
 
 	printArray(returnNums, *returnSize);
 
