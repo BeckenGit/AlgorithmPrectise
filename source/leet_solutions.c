@@ -1,6 +1,28 @@
 #include <stdio.h>
 #include <malloc.h>
 #include "leet_lib.h"
+#define MAXNUM 100000
+
+
+/**
+ * Solution: 237. Delete Node in a Linked List
+ * Description: Write a function to delete a node (except the tail) in a singly
+   linked list, given only access to that node.
+ * Example: Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the
+   third node with value 3, the linked list should become 1 -> 2 -> 4 after
+   calling your function.
+ * Author: Becken
+ * Date: 2016-6-28
+ */
+void deleteNode(struct ListNode* node) {
+  while(node -> next != NULL){
+    node -> val = node -> next -> val;
+    if(node -> next -> next == NULL)
+      break;
+    node = node -> next;
+  }
+  node -> next = NULL;
+}
 
 
 /**
@@ -88,6 +110,17 @@ struct TreeNode* invertTree(struct TreeNode* root) {
  * Author: Becken
  * Date: 2016-6-27
  */
+
+int isExisted(int num, int* nums, int numsSize){
+  int i;
+  for(i = 0; i < numsSize; i++){
+    if(num == nums[i])
+      return 1;
+  }
+  return 0;
+}
+
+
 int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
   int i;
   *returnSize = 0;
@@ -102,14 +135,6 @@ int* intersection(int* nums1, int nums1Size, int* nums2, int nums2Size, int* ret
   return returnNums;
 }
 
-int isExisted(int num, int* nums, int numsSize){
-  int i;
-  for(i = 0; i < numsSize; i++){
-    if(num == nums[i])
-      return 1;
-  }
-  return 0;
-}
 
 /**
  * Solution: 350. Intersection of Two Arrays II
@@ -121,7 +146,6 @@ int isExisted(int num, int* nums, int numsSize){
  * Author: Becken
  * Date: 2016-6-28
  */
-#define MAXNUM 100000
 int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* returnSize) {
   int i, j;
   int num_index_ij[MAXNUM][2];

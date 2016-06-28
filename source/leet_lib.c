@@ -2,6 +2,26 @@
 #include "leet_lib.h"
 #include <malloc.h>
 
+struct ListNode* ArrayToList(int* nums, int numsSize) {
+	struct ListNode* head = NULL;
+	int i;
+	for(i = numsSize - 1; i >= 0; i--) {
+		struct ListNode* newNode = (struct ListNode*)malloc(sizeof(struct ListNode));
+		newNode -> next = head;
+		newNode -> val = nums[i];
+		head = newNode;
+	}
+	return head;
+}
+
+void printList(struct ListNode* head){
+	while(head != NULL){
+		printf("%d ", head -> val);
+		head = head -> next;
+	}
+	printf("\n");
+}
+
 struct TreeNode* CreateTreeNode(char* str) {
 	if (str[0] == '\0')
 		return NULL;

@@ -4,19 +4,17 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums1[4] = {1, 2, 2, 1};
-	int nums1Size = 4;
+	int nums[4] = {1, 2, 3, 4};
+	int numsSize = 4;
 
-	int nums2[2] = {3, 2};
-	int nums2Size = 2;
+	struct ListNode* head = ArrayToList(nums, numsSize);
+	printList(head);
 
-	printArray(nums1, nums1Size);
-	printArray(nums2, nums2Size);
+	struct ListNode* node = head -> next;
+	printf("Delete second node: %d\n", node -> val);
+	deleteNode(node);
 
-	int* returnSize = (int*)malloc(sizeof(int));
-	int* returnNums = intersect(nums1, nums1Size, nums2, nums2Size, returnSize);
-
-	printArray(returnNums, *returnSize);
+	printList(head);
 
 	return 0;
 }
