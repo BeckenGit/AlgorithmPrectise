@@ -1,3 +1,8 @@
+#include <stdbool.h>
+
+//Solution: 100. Same Tree
+bool isSameTree(struct TreeNode* p, struct TreeNode* q);
+
 //Solution: 104. Maximum Depth of Binary Tree
 int maxDepth(struct TreeNode *root);
 

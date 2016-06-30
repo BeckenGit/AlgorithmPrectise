@@ -1,7 +1,42 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <stdbool.h>
 #include "leet_lib.h"
 #define MAXNUM 100000
+
+/**
+ * Solution: 242. Valid Anagram
+ * Description: Given two strings s and t, write a function to determine if t is
+   an anagram of s.
+ * Example: s = "anagram", t = "nagaram", return true.
+            s = "rat", t = "car", return false.
+ * Note: You may assume the string contains only lowercase alphabets.
+ * Author: Becken
+ * Date: 2016-6-30
+ */
+bool isAnagram(char* s, char* t) {
+
+}
+
+
+/**
+ * Solution: 100. Same Tree
+ * Description: Given two binary trees, write a function to check if they are
+   equal or not.Two binary trees are considered equal if they are structurally
+   identical and the nodes have the same value.
+ * Author: Becken
+ * Date: 2016-6-30
+ */
+bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+  if(p == NULL && q == NULL)
+    return true;
+  else if(p == NULL || q == NULL)
+    return false;
+  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) && isSameTree(p -> right, q ->right))
+    return true;
+  else
+    return false;
+}
 
 
 /**
