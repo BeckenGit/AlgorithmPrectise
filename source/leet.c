@@ -7,12 +7,16 @@
 int main() {
 	char* s = "abc";
 	char* t = "def";
-	bool r = isAnagram(s, t);
+	int i = 0;
+	while(s[i] != '\0'){
+		printf("%c ", s[i]);
+		if(s[i] == 'b'){
+			printf("\nbreak!\n");
+			break;
+		}
 
-	if(r)
-		printf("It's anagram!\n");
-	else
-		printf("It's not anagram!\n");
+		i++;
+	}
 
 	return 0;
 }

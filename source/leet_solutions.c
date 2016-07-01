@@ -5,14 +5,34 @@
 #define MAXNUM 100000
 
 /**
- * Solution: 242. Valid Anagram
+ * Solution: 169. Majority Element
+ * Description: Given an array of size n, find the majority element. The majority
+   element is the element that appears more than ⌊ n/2 ⌋ times.
+
+                You may assume that the array is non-empty and the majority
+   element always exist in the array.
+ * Author: Becken
+ * Date: 2016-7-1
+ */
+int majorityElement(int* nums, int numsSize) {
+  int count[MAXNUM] = {0};
+  int maxNum = ;
+  int i;
+  for(i = 0; i < numsSize; i++){
+    count[nums[i]]++;
+    if
+  }
+}
+
+/**
+ * Solution: 242. Valid Anagram (Error existed)
  * Description: Given two strings s and t, write a function to determine if t is
    an anagram of s.
  * Example: s = "anagram", t = "nagaram", return true.
             s = "rat", t = "car", return false.
  * Note: You may assume the string contains only lowercase alphabets.
  * Author: Becken
- * Date: 2016-6-30
+ * Date: 2016-7-1
  */
 bool isAnagram(char* s, char* t) {
   int sp = 0; //the pointer of string "s"
