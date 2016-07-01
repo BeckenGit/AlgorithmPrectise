@@ -1,5 +1,8 @@
 #include <stdbool.h>
 
+//Solution: 242. Valid Anagram
+bool isAnagram(char* s, char* t);
+
 //Solution: 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);
 

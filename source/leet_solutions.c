@@ -15,7 +15,29 @@
  * Date: 2016-6-30
  */
 bool isAnagram(char* s, char* t) {
+  int sp = 0; //the pointer of string "s"
+  int tp = 0; //the pointer of string "t"
+  while (s[sp] != '\0') {
+    tp = 0;
+    while (t[tp] != '\0') {
+      if(t[tp] == s[sp]) {
+        t[tp] = '#';
+        break;
+      }
+      tp++;
+    }
+    sp++;
+  }
 
+  tp = 0;
+  while(t[tp] != '\0'){
+    if(t[tp] != '#')
+      return false;
+    tp++;
+  }
+  if (sp != tp)
+    return false;
+  return true;
 }
 
 
@@ -32,7 +54,8 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
     return true;
   else if(p == NULL || q == NULL)
     return false;
-  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) && isSameTree(p -> right, q ->right))
+  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) &&
+          isSameTree(p -> right, q ->right))
     return true;
   else
     return false;

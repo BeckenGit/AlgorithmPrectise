@@ -5,15 +5,14 @@
 #include "leet_solutions.h"
 
 int main() {
-	char* pStr = "1, 2, 4";
-	char* qStr = "1, 2, 3";
-	struct TreeNode* p = CreateTreeNode(pStr);
-	struct TreeNode* q = CreateTreeNode(qStr);
+	char* s = "abc";
+	char* t = "def";
+	bool r = isAnagram(s, t);
 
-	if(isSameTree(p, q))
-		printf("yes!\n");
+	if(r)
+		printf("It's anagram!\n");
 	else
-		printf("No!\n");
+		printf("It's not anagram!\n");
 
 	return 0;
 }
