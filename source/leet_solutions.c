@@ -14,15 +14,52 @@
  * Author: Becken
  * Date: 2016-7-1
  */
+struct eleCount{
+  int num;
+  int count;
+};
 int majorityElement(int* nums, int numsSize) {
-  int count[MAXNUM] = {0};
-  int maxNum = ;
+
+  int eleNum = 0;
+  int aEle;
+  struct eleCount* eleCounts = (struct eleCount*)malloc(sizeof(struct eleCount)*eleNum);
   int i;
   for(i = 0; i < numsSize; i++){
-    count[nums[i]]++;
-    if
+    aEle = nums[i];
+
+    bool isExisted = false;
+    int j = 0;
+    while(j < eleNum){
+      if(aEle == (eleCounts[j].num)){
+        isExisted = true;
+        (eleCounts[j].count)++;
+        break;
+      }
+      j++;
+    }
+
+    if(!isExisted){
+      eleNum++;
+      eleCounts = (struct eleCount*)realloc(eleCounts, sizeof(struct eleCount)*eleNum);
+      eleCounts[eleNum - 1].num = aEle;
+      eleCounts[eleNum - 1].count = 1;
+    }
   }
+
+  int maxCount = 0;
+  int maxEle = 0;
+  i = 0;
+  while(i < eleNum){
+    if(eleCounts[i].count >= maxCount){
+      maxCount = eleCounts[i].count;
+      maxEle = eleCounts[i].num;
+    }
+    i++;
+  }
+
+  return maxEle;
 }
+
 
 /**
  * Solution: 242. Valid Anagram (Error existed)

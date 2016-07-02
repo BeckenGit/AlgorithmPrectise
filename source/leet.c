@@ -5,18 +5,9 @@
 #include "leet_solutions.h"
 
 int main() {
-	char* s = "abc";
-	char* t = "def";
-	int i = 0;
-	while(s[i] != '\0'){
-		printf("%c ", s[i]);
-		if(s[i] == 'b'){
-			printf("\nbreak!\n");
-			break;
-		}
-
-		i++;
-	}
+	int nums = {1, 1};
+	int numsSize = 2;
+	printf("%d\n", majorityElement(nums, numsSize));
 
 	return 0;
 }
