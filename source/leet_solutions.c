@@ -3,6 +3,51 @@
 #include <stdbool.h>
 #include "leet_lib.h"
 #define MAXNUM 100000
+/**
+ * Solution: 206. Reverse Linked List
+ * Hint: A linked list can be reversed either iteratively or recursively. Could
+   you implement both?
+ * Author: Becken
+ * Date: 2016-7-4
+ */
+struct ListNode* reverseList(struct ListNode* head) {
+  struct ListNode* p = head;
+  struct ListNode* q;
+  struct ListNode* tail;
+  while(p -> next != NULL){
+    p = p -> next;
+  }
+  tail = p;
+
+  p = head;
+  while(p != tail){
+    q = p;
+    p = p -> next;
+    q -> next = tail -> next;
+    tail -> next = q;
+  }
+  return tail;
+}
+
+
+/**
+ * Solution: 217. Contains Duplicate
+ * Description: Given an array of integers, find if the array contains any
+   duplicates. Your function should return true if any value appears at least
+   twice in the array, and it should return false if every element is distinct.
+ * Author: Becken
+ * Date: 2016-7-4
+ */
+bool containsDuplicate(int* nums, int numsSize) {
+  int i, j;
+  for(i = 0; i < numsSize - 1; i++){
+    for(j = i + 1; j < numsSize; j++){
+      if(nums[i] == nums[j])
+        return true;
+    }
+  }
+  return false;
+}
 
 /**
  * Solution: 242. Valid Anagram
@@ -15,7 +60,7 @@
  * Date: 2016-6-30
  */
 bool isAnagram(char* s, char* t) {
-
+  return true;
 }
 
 

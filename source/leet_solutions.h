@@ -1,4 +1,9 @@
 #include <stdbool.h>
+//Solution: 206. Reverse Linked List
+struct ListNode* reverseList(struct ListNode* head);
+
+//Solution: 217. Contains Duplicate
+bool containsDuplicate(int* nums, int numsSize);
 
 //Solution: 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);

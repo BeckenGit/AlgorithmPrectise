@@ -5,15 +5,15 @@
 #include "leet_solutions.h"
 
 int main() {
-	char* pStr = "1, 2, 4";
-	char* qStr = "1, 2, 3";
-	struct TreeNode* p = CreateTreeNode(pStr);
-	struct TreeNode* q = CreateTreeNode(qStr);
+	int nums[] = {1, 2, 3, 4};
+	int numsSize = 4;
+	struct ListNode* head = ArrayToList(nums, numsSize);
+	printList(head);
 
-	if(isSameTree(p, q))
-		printf("yes!\n");
-	else
-		printf("No!\n");
+
+	head = reverseList(head);
+
+	printList(head);
 
 	return 0;
 }
