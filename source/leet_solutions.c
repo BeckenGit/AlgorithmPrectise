@@ -50,17 +50,95 @@ bool containsDuplicate(int* nums, int numsSize) {
 }
 
 /**
- * Solution: 242. Valid Anagram
+ * Solution: 169. Majority Element
+ * Description: Given an array of size n, find the majority element. The majority
+   element is the element that appears more than ⌊ n/2 ⌋ times.
+
+                You may assume that the array is non-empty and the majority
+   element always exist in the array.
+ * Author: Becken
+ * Date: 2016-7-1
+ */
+struct eleCount{
+  int num;
+  int count;
+};
+int majorityElement(int* nums, int numsSize) {
+
+  int eleNum = 0;
+  int aEle;
+  struct eleCount* eleCounts = (struct eleCount*)malloc(sizeof(struct eleCount)*eleNum);
+  int i;
+  for(i = 0; i < numsSize; i++){
+    aEle = nums[i];
+
+    bool isExisted = false;
+    int j = 0;
+    while(j < eleNum){
+      if(aEle == (eleCounts[j].num)){
+        isExisted = true;
+        (eleCounts[j].count)++;
+        break;
+      }
+      j++;
+    }
+
+    if(!isExisted){
+      eleNum++;
+      eleCounts = (struct eleCount*)realloc(eleCounts, sizeof(struct eleCount)*eleNum);
+      eleCounts[eleNum - 1].num = aEle;
+      eleCounts[eleNum - 1].count = 1;
+    }
+  }
+
+  int maxCount = 0;
+  int maxEle = 0;
+  i = 0;
+  while(i < eleNum){
+    if(eleCounts[i].count >= maxCount){
+      maxCount = eleCounts[i].count;
+      maxEle = eleCounts[i].num;
+    }
+    i++;
+  }
+
+  return maxEle;
+}
+
+
+/**
+ * Solution: 242. Valid Anagram (Error existed)
  * Description: Given two strings s and t, write a function to determine if t is
    an anagram of s.
  * Example: s = "anagram", t = "nagaram", return true.
             s = "rat", t = "car", return false.
  * Note: You may assume the string contains only lowercase alphabets.
  * Author: Becken
- * Date: 2016-6-30
+ * Date: 2016-7-1
  */
 bool isAnagram(char* s, char* t) {
-  return true;
+  int sp = 0; //the pointer of string "s"
+  int tp = 0; //the pointer of string "t"
+  while (s[sp] != '\0') {
+    tp = 0;
+    while (t[tp] != '\0') {
+      if(t[tp] == s[sp]) {
+        t[tp] = '#';
+        break;
+      }
+      tp++;
+    }
+    sp++;
+  }
+
+  tp = 0;
+  while(t[tp] != '\0'){
+    if(t[tp] != '#')
+      return false;
+    tp++;
+  }
+  if (sp != tp)
+    return false;
 }
 
 
@@ -77,7 +155,8 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
     return true;
   else if(p == NULL || q == NULL)
     return false;
-  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) && isSameTree(p -> right, q ->right))
+  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) &&
+          isSameTree(p -> right, q ->right))
     return true;
   else
     return false;

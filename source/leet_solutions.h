@@ -1,9 +1,16 @@
 #include <stdbool.h>
+
 //Solution: 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
 
 //Solution: 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
+
+//Solution: 169. Majority Element
+//int majorityElement(int* nums, int numsSize);
+
+//Solution: 242. Valid Anagram
+bool isAnagram(char* s, char* t);
 
 //Solution: 100. Same Tree
 bool isSameTree(struct TreeNode* p, struct TreeNode* q);
