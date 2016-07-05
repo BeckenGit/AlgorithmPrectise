@@ -24,6 +24,15 @@
  * Author: Becken
  * Date: 2016-7-5
  */
+
+bool isExistedInTree(struct TreeNode* root, struct TreeNode* p){
+  if(root == NULL)
+    return false;
+  if(p == root || isExistedInTree(root -> left, p) || isExistedInTree(root -> right, p))
+    return true;
+  return false;
+ }
+
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
                                       struct TreeNode* q) {
   struct TreeNode* ancestor = root;
@@ -38,14 +47,9 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
     return lowestCommonAncestor(root -> left, p, q);
   if(!pInLeft && !qInLeft)
     return lowestCommonAncestor(root -> right, p, q);
+  return NULL;
 }
 
-bool isExistedInTree(struct TreeNode* root, struct TreeNode* p){
-  if(root == NULL)
-    return false;
-  if(p == root || isExistedInTree(root -> left, p) || isExistedInTree(root -> right, p))
-    return true;
-}
 
 /**
  * Solution: 206. Reverse Linked List

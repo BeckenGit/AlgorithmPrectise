@@ -1,7 +1,20 @@
 #include <stdio.h>
 #include "leet_lib.h"
 #include <malloc.h>
-
+struct TreeNode* nodeOfVal(struct TreeNode* root, int val){
+	if(root == NULL)
+		return NULL;
+	if(root -> val == val)
+		return root;
+	struct TreeNode* t;
+	t = nodeOfVal(root -> left, val);
+	if(t != NULL)
+		return t;
+	t = nodeOfVal(root -> right, val);
+	if(t != NULL)
+		return t;
+	return NULL;
+}
 struct ListNode* ArrayToList(int* nums, int numsSize) {
 	struct ListNode* head = NULL;
 	int i;
