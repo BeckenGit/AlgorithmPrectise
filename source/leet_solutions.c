@@ -4,13 +4,61 @@
 #include "leet_lib.h"
 #define MAXNUM 100000
 /**
+ * Solution: 235. Lowest Common Ancestor of a Binary Search Tree
+ * Description: Given a binary search tree (BST), find the lowest common ancestor
+   (LCA) of two given nodes in the BST.
+                According to the definition of LCA on Wikipedia: “The lowest
+   common ancestor is defined between two nodes v and w as the lowest node in T
+   that has both v and w as descendants (where we allow a node to be a descendant
+   of itself).”
+          _______6______
+         /              \
+     ___2__          ___8__
+    /      \        /      \
+   0       4       7       9
+         /  \
+        3   5
+   Example: the lowest common ancestor (LCA) of nodes 2 and 8 is 6. Another
+   example is LCA of nodes 2 and 4 is 2, since a node can be a descendant of
+   itself according to the LCA definition.
+ * Author: Becken
+ * Date: 2016-7-5
+ */
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
+                                      struct TreeNode* q) {
+  struct TreeNode* ancestor = root;
+  if(ancestor == p || ancestor == q)
+    return ancestor;
+  bool pInLeft = isExistedInTree(root -> left, p);
+  bool qInLeft = isExistedInTree(root -> left, q);
+
+  if(pInLeft && !qInLeft || !pInLeft && qInLeft)
+    return ancestor;
+  if(pInLeft && qInLeft)
+    return lowestCommonAncestor(root -> left, p, q);
+  if(!pInLeft && !qInLeft)
+    return lowestCommonAncestor(root -> right, p, q);
+}
+
+bool isExistedInTree(struct TreeNode* root, struct TreeNode* p){
+  if(root == NULL)
+    return false;
+  if(p == root || isExistedInTree(root -> left, p) || isExistedInTree(root -> right, p))
+    return true;
+}
+
+/**
  * Solution: 206. Reverse Linked List
  * Hint: A linked list can be reversed either iteratively or recursively. Could
    you implement both?
  * Author: Becken
- * Date: 2016-7-4
+ * Date: 2016-7-5
  */
+//iterativen method
 struct ListNode* reverseList(struct ListNode* head) {
+  if(head == NULL){
+    return NULL;
+  }
   struct ListNode* p = head;
   struct ListNode* q;
   struct ListNode* tail;
@@ -29,6 +77,22 @@ struct ListNode* reverseList(struct ListNode* head) {
   return tail;
 }
 
+//recursive method
+struct ListNode* reverseList_R(struct ListNode* head) {
+  if(head == NULL)
+    return NULL;
+  if(head -> next == NULL)
+    return head;
+  struct ListNode* q = head;
+  head = reverseList_R(head -> next);
+  struct ListNode* p = head;
+  while(p -> next != NULL){
+    p = p -> next;
+  }
+  p -> next = q;
+  q -> next = NULL;
+  return head;
+}
 
 /**
  * Solution: 217. Contains Duplicate

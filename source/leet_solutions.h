@@ -1,7 +1,13 @@
 #include <stdbool.h>
 
+//Solution: 235. Lowest Common Ancestor of a Binary Search Tree
+struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
+                                      struct TreeNode* q);
+bool isExistedInTree(struct TreeNode* root, struct TreeNode* p);
+
 //Solution: 206. Reverse Linked List
 struct ListNode* reverseList(struct ListNode* head);
+struct ListNode* reverseList_R(struct ListNode* head);
 
 //Solution: 217. Contains Duplicate
 bool containsDuplicate(int* nums, int numsSize);
