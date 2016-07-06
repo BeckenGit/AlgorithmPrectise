@@ -1,4 +1,10 @@
 #include <stdbool.h>
+//Solution: 202. Happy Number
+int squaresSum(int num);
+bool isHappy(int n);
+
+//Solution: 263. Ugly Number
+bool isUgly(int num);
 
 //Solution: 235. Lowest Common Ancestor of a Binary Search Tree
 struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
