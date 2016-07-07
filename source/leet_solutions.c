@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include <stdbool.h>
 #include "leet_lib.h"
-#define MAXNUM 1000000
+#define MAXNUM 100000
 /**
  * Solution: 202. Happy Number
  * Description: Write an algorithm to determine if a number is "happy".
@@ -29,12 +29,22 @@ int squaresSum(int num){
 }
 
 bool isHappy(int n) {
-  int isIn[MAXNUM] = {0};
+  int containor[MAXNUM];
+  int i;
+  for(i = 0; i < MAXNUM; i++){
+    containor[i] = -1;
+  }
+  int size = 0;
   while(n != 1){
-    isIn[n] = 1;
+    containor[size] = n;
+    size++;
     n = squaresSum(n);
-    if(isIn[n] == 1)
-      return false;
+    i = 0;
+    while(i < size){
+      if(n == containor[i])
+        return false;
+      i++;
+    }
   }
   return true;
 }
