@@ -5,10 +5,12 @@
 #include "leet_solutions.h"
 
 int main() {
-	int num = 19;
-	if(isHappy(num))
-		printf("Yes\n");
-	else
-		printf("No\n");
+	int nums[] = {1, 2, 2, 3};
+	int numsSize = 4;
+	struct ListNode* head = ArrayToList(nums, numsSize);
+	printList(head);
+	head = deleteDuplicates(head);
+	printList(head);
+
 	return 0;
 }

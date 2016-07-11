@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 83. Remove Duplicates from Sorted List
+struct ListNode* deleteDuplicates(struct ListNode* head);
+
 //Solution: 202. Happy Number
 int squaresSum(int num);
 bool isHappy(int n);

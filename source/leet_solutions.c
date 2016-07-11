@@ -3,6 +3,39 @@
 #include <stdbool.h>
 #include "leet_lib.h"
 #define MAXNUM 100000
+
+/**
+ * Solution: 83. Remove Duplicates from Sorted List
+ * Description: Given a sorted linked list, delete all duplicates such that each
+   element appear only once.
+   Example: Given 1->1->2, return 1->2.
+            Given 1->1->2->3->3, return 1->2->3.
+ * Author: Becken
+ * Date: 2016-7-11
+ */
+struct ListNode* deleteDuplicates(struct ListNode* head) {
+  if(head ==  NULL)
+    return NULL;
+  struct ListNode* interator = head -> next;
+  struct ListNode* needCheckNode = head;
+  int needCheckVal = needCheckNode -> val;
+  bool isDupl = false;
+  while(interator != NULL){
+    if(interator -> val == needCheckVal && !isDupl){
+      isDupl = true;
+    }
+    if(interator -> val != needCheckVal && isDupl){
+      needCheckNode -> next = interator;
+      needCheckNode = interator;
+      needCheckVal = needCheckNode -> val;
+      isDupl = false;
+    }
+    interator = interator -> next;
+  }
+  return head;
+}
+
+
 /**
  * Solution: 202. Happy Number
  * Description: Write an algorithm to determine if a number is "happy".
