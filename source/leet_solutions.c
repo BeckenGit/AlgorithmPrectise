@@ -5,6 +5,26 @@
 #define MAXNUM 100000
 
 /**
+ * Solution: 70. Climbing Stairs
+ * Description: You are climbing a stair case. It takes n steps to reach to the
+   top.
+                Each time you can either climb 1 or 2 steps. In how many distinct
+   ways can you climb to the top?
+ * Author: Becken
+ * Date: 2016-7-14
+ */
+
+int climbStairs(int n) {
+  if(n == 0)
+    return 0;
+  else if(n == 1)
+    return 1;
+  else if(n == 2)
+    return 2;
+  else
+    return climbStairs(n - 1) + climbStairs(n - 2);
+}
+/**
  * Solution: 83. Remove Duplicates from Sorted List
  * Description: Given a sorted linked list, delete all duplicates such that each
    element appear only once.

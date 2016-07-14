@@ -5,12 +5,8 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[] = {1, 2, 2, 3, 3};
-	int numsSize = 5;
-	struct ListNode* head = ArrayToList(nums, numsSize);
-	printList(head);
-	head = deleteDuplicates(head);
-	printList(head);
+	int steps = 44;
+	printf("%d steps has %d ways to reach !\n", steps, climbStairs(steps));
 
 	return 0;
 }

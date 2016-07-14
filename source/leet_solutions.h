@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 70. Climbing Stairs
+int climbStairs(int n);
+
 //Solution: 83. Remove Duplicates from Sorted List
 struct ListNode* deleteDuplicates(struct ListNode* head);
 
