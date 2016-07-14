@@ -5,8 +5,8 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[] = {1, 2, 2, 3};
-	int numsSize = 4;
+	int nums[] = {1, 2, 2, 3, 3};
+	int numsSize = 5;
 	struct ListNode* head = ArrayToList(nums, numsSize);
 	printList(head);
 	head = deleteDuplicates(head);

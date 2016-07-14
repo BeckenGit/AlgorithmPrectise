@@ -24,7 +24,7 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
     if(interator -> val == needCheckVal && !isDupl){
       isDupl = true;
     }
-    if(interator -> val != needCheckVal && isDupl){
+    if(interator -> val != needCheckVal){
       needCheckNode -> next = interator;
       needCheckNode = interator;
       needCheckVal = needCheckNode -> val;
@@ -32,6 +32,8 @@ struct ListNode* deleteDuplicates(struct ListNode* head) {
     }
     interator = interator -> next;
   }
+  if(isDupl)
+    needCheckNode -> next = NULL;
   return head;
 }
 
@@ -142,7 +144,7 @@ struct TreeNode* lowestCommonAncestor(struct TreeNode* root, struct TreeNode* p,
   bool pInLeft = isExistedInTree(root -> left, p);
   bool qInLeft = isExistedInTree(root -> left, q);
 
-  if(pInLeft && !qInLeft || !pInLeft && qInLeft)
+  if((pInLeft && !qInLeft) || (!pInLeft && qInLeft))
     return ancestor;
   if(pInLeft && qInLeft)
     return lowestCommonAncestor(root -> left, p, q);
@@ -308,6 +310,7 @@ bool isAnagram(char* s, char* t) {
   }
   if (sp != tp)
     return false;
+  return true;
 }
 
 
@@ -324,8 +327,7 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
     return true;
   else if(p == NULL || q == NULL)
     return false;
-  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) &&
-          isSameTree(p -> right, q ->right))
+  else if(p -> val == q -> val && isSameTree(p -> left, q -> left) && isSameTree(p -> right, q ->right))
     return true;
   else
     return false;
