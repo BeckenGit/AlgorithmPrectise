@@ -1,4 +1,8 @@
 #include <stdbool.h>
+
+//Solution: 121. Best Time to Buy and Sell Stock
+int maxProfit(int* prices, int pricesSize);
+
 //Solution: 70. Climbing Stairs
 int climbStairs(int n);
 
