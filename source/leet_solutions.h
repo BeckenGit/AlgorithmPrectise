@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 141. Linked List Cycle
+bool isInArray(struct ListNode* node, struct ListNode** nodes, int nodesSize);
+bool hasCycle(struct ListNode *head);
 
 //Solution: 121. Best Time to Buy and Sell Stock
 int maxProfit(int* prices, int pricesSize);

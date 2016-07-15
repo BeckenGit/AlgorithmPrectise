@@ -1,16 +1,25 @@
 #include <stdio.h>
 #include "leet_lib.h"
 #include <malloc.h>
-struct TreeNode* nodeOfVal(struct TreeNode* root, int val){
+struct ListNode* listNodeOfVal(struct ListNode* head, int val){
+	struct ListNode* p = head;
+	while(p != NULL){
+		if(p -> val == val)
+			return p;
+		p = p -> next;
+	}
+	return NULL;
+}
+struct TreeNode* treeNodeOfVal(struct TreeNode* root, int val){
 	if(root == NULL)
 		return NULL;
 	if(root -> val == val)
 		return root;
 	struct TreeNode* t;
-	t = nodeOfVal(root -> left, val);
+	t = treeNodeOfVal(root -> left, val);
 	if(t != NULL)
 		return t;
-	t = nodeOfVal(root -> right, val);
+	t = treeNodeOfVal(root -> right, val);
 	if(t != NULL)
 		return t;
 	return NULL;

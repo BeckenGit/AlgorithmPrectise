@@ -16,8 +16,8 @@ struct ListNode {
   int val;
   struct ListNode *next;
 };
-
-struct TreeNode* nodeOfVal(struct TreeNode* root, int val);
+struct ListNode* listNodeOfVal(struct ListNode* head, int val);
+struct TreeNode* treeNodeOfVal(struct TreeNode* root, int val);
 struct ListNode* ArrayToList(int* nums, int numsSize);
 struct TreeNode* CreateTreeNode(char* str);
 void PreOrder(struct TreeNode* root);

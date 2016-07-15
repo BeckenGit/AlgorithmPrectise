@@ -4,6 +4,38 @@
 #include "leet_lib.h"
 #define MAXNUM 100000
 #define INF 2147483647
+
+/**
+ * Solution: 141. Linked List Cycle
+ * Description: Given a linked list, determine if it has a cycle in it.
+ * Author: Becken
+ * Date: 2016-7-15
+ */
+bool isInArray(struct ListNode* node,struct ListNode** nodes, int nodesSize){
+  int i;
+  for(i = 0; i < nodesSize; i++){
+    if(node == nodes[i])
+      return true;
+  }
+  return false;
+}
+bool hasCycle(struct ListNode *head) {
+  struct ListNode* nodes[MAXNUM];
+  int nodesSize = 0;
+  struct ListNode* p;
+  while(p != NULL && !isInArray(p, nodes, nodesSize)){
+    nodes[nodesSize] = p;
+    printf("%d ",p -> val);
+    nodesSize++;
+    p = p -> next;
+  }
+  if(p == NULL)
+    return true;
+  return false;
+}
+
+
+
 /**
  * Solution: 121. Best Time to Buy and Sell Stock
  * Description: Say you have an array for which the ith element is the price of
@@ -21,12 +53,7 @@
  * Date: 2016-7-14
  */
 int maxProfit(int* prices, int pricesSize) {
-  int i;
-  int buyPrice = INF;
-  int sellPrice = 0;
-  for(i = 0; i < pricesSize; i++){
-
-  }
+  return 0;
 }
 /**
  * Solution: 70. Climbing Stairs
