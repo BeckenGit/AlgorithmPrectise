@@ -4,6 +4,42 @@
 #include "leet_lib.h"
 #define MAXNUM 100000
 #define INF 2147483647
+/**
+ * Solution: 21. Merge Two Sorted Lists
+ * Description: Merge two sorted linked lists and return it as a new list. The
+   new list should be made by splicing together the nodes of the first two lists.
+ * Author: Becken
+ * Date: 2016-7-16
+ */
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) {
+  struct ListNode* head;
+  struct ListNode* p = (struct ListNode*)malloc(sizeof(struct ListNode));
+  head = p;
+  while(true){
+    if(l1 != NULL && l2 != NULL){
+      if(l1 -> val < l2 -> val){
+        p -> next = l1;
+        l1 = l1 -> next;
+      }
+      else{
+        p -> next = l2;
+        l2 = l2 -> next;
+      }
+    }
+    else if(l1 == NULL && l2 != NULL){
+      p -> next = l2;
+      l2 = NULL;
+    }
+    else if(l2 == NULL && l1 != NULL){
+      p -> next = l1;
+      l1 = NULL;
+    }
+    else
+      return head -> next;
+    p = p -> next;
+  }
+}
+
 
 /**
  * Solution: 141. Linked List Cycle
@@ -22,15 +58,16 @@ bool isInArray(struct ListNode* node,struct ListNode** nodes, int nodesSize){
 bool hasCycle(struct ListNode *head) {
   struct ListNode* nodes[MAXNUM];
   int nodesSize = 0;
-  struct ListNode* p;
-  while(p != NULL && !isInArray(p, nodes, nodesSize)){
-    nodes[nodesSize] = p;
-    printf("%d ",p -> val);
-    nodesSize++;
+  struct ListNode* p = head;
+  while(p != NULL){
+    if(isInArray(p, nodes, nodesSize))
+      return true;
+    else{
+      nodes[nodesSize] = p;
+      nodesSize++;
+    }
     p = p -> next;
   }
-  if(p == NULL)
-    return true;
   return false;
 }
 

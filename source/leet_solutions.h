@@ -1,4 +1,9 @@
 #include <stdbool.h>
+
+//Solution: 21. Merge Two Sorted Lists
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2);
+
+
 //Solution: 141. Linked List Cycle
 bool isInArray(struct ListNode* node, struct ListNode** nodes, int nodesSize);
 bool hasCycle(struct ListNode *head);

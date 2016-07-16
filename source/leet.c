@@ -5,16 +5,16 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[5] = {1, 2, 3, 4, 5};
-	int numsSize = 5;
-	struct ListNode* head = ArrayToList(nums, numsSize);
-	struct ListNode* node5 = listNodeOfVal(head, 5);
-	struct ListNode* node3 = listNodeOfVal(head, 3);
+	int nums1[3] = {1, 2, 5};
+	int numsSize1 = 3;
+	struct ListNode* head1 = ArrayToList(nums1, numsSize1);
+
+	int nums2[2] = {3, 4};
+	int numsSize2 = 2;
+	struct ListNode* head2 = ArrayToList(nums2, numsSize2);
+
+	struct ListNode* head = mergeTwoLists(head1, head2);
+
 	printList(head);
-	//node5 -> next = node3;
-	if(hasCycle(head))
-		printf("Yes!\n");
-	else
-		printf("No!\n");
 	return 0;
 }
