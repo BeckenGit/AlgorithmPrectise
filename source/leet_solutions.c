@@ -4,6 +4,45 @@
 #include "leet_lib.h"
 #define MAXNUM 100000
 #define INF 2147483647
+
+/**
+ * Solution: 345. Reverse Vowels of a String
+ * Description: Write a function that takes a string as input and reverse only the vowels of a string.
+ * Example 1: Given s = "hello", return "holle".
+ * Example 2: Given s = "leetcode", return "leotcede".
+ * Note: The vowels does not include the letter "y".
+ * Author: Becken
+ * Date: 2016-7-16
+ */
+char* reverseVowels(char* s) {
+  int len = 0;
+  while(s[len] != '\0'){
+    len++;
+  }
+
+  int left = 0;
+  int right = len - 1;
+  char temp;
+
+  while(left < right){
+    while(s[left] != 'a' && s[left] != 'e' && s[left] != 'i' && s[left] != 'o' && s[left] != 'u'){
+      left++;
+    }
+
+    while(s[right] != 'a' && s[right] != 'e' && s[right] != 'i' && s[right] != 'o' && s[right] != 'u'){
+      right--;
+    }
+
+    temp = s[left];
+    s[left] = s[right];
+    s[right] = temp;
+
+    left++;
+    right--;
+  }
+  return s;
+}
+
 /**
  * Solution: 21. Merge Two Sorted Lists
  * Description: Merge two sorted linked lists and return it as a new list. The

@@ -1,4 +1,6 @@
 #include <stdbool.h>
+//Solution: 345. Reverse Vowels of a String
+char* reverseVowels(char* s);
 
 //Solution: 21. Merge Two Sorted Lists
 struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2);
