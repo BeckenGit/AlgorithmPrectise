@@ -14,34 +14,39 @@
  * Author: Becken
  * Date: 2016-7-16
  */
-char* reverseVowels(char* s) {
-  int len = 0;
-  while(s[len] != '\0'){
-    len++;
-  }
+ char* reverseVowels(char* s) {
+    	int len = 0;
+ 	while(s[len] != '\0'){
+ 		len++;
+ 	}
+ 	int left = 0;
+ 	int right = len - 1;
+ 	char temp;
 
-  int left = 0;
-  int right = len - 1;
-  char temp;
+ 	while(left < right){
 
-  while(left < right){
-    while(s[left] != 'a' && s[left] != 'e' && s[left] != 'i' && s[left] != 'o' && s[left] != 'u'){
-      left++;
-    }
+ 		while(s[left] != 'a' && s[left] != 'e' && s[left] != 'i' && s[left] != 'o' && s[left] != 'u' &&
+ 		      s[left] != 'A' && s[left] != 'E' && s[left] != 'I' && s[left] != 'O' && s[left] != 'U' && left < len){
+ 			left++;
+ 		}
 
-    while(s[right] != 'a' && s[right] != 'e' && s[right] != 'i' && s[right] != 'o' && s[right] != 'u'){
-      right--;
-    }
+ 		while(s[right] != 'a' && s[right] != 'e' && s[right] != 'i' && s[right] != 'o' && s[right] != 'u' &&
+ 		      s[right] != 'A' && s[right] != 'E' && s[right] != 'I' && s[right] != 'O' && s[right] != 'U' && right >= 0){
+ 			right--;
+ 		}
 
-    temp = s[left];
-    s[left] = s[right];
-    s[right] = temp;
+ 		if(left < right){
+ 			temp = s[left];
+ 			s[left] = s[right];
+ 			s[right] = temp;
+ 		}
 
-    left++;
-    right--;
-  }
-  return s;
-}
+
+ 		left++;
+ 		right--;
+ 	}
+ 	return s;
+ }
 
 /**
  * Solution: 21. Merge Two Sorted Lists
