@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 24. Swap Nodes in Pairs
+struct ListNode* swapPairs(struct ListNode* head);
+
 //Solution: 345. Reverse Vowels of a String
 char* reverseVowels(char* s);
 

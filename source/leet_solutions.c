@@ -4,6 +4,26 @@
 #include "leet_lib.h"
 #define MAXNUM 100000
 #define INF 2147483647
+/**
+ * Solution: 24. Swap Nodes in Pairs
+ * Description: Given a linked list, swap every two adjacent nodes and return its
+  head.Your algorithm should use only constant space. You may not modify the
+  values in the list, only nodes itself can be changed.
+ * Example: Given 1->2->3->4, you should return the list as 2->1->4->3.
+ * Author: Becken
+ * Date: 2016-8-4
+ */
+//use recursion
+struct ListNode* swapPairs(struct ListNode* head) {
+  if(head == NULL)
+    return NULL;
+  struct ListNode* second = head -> next;
+  if(second == NULL)
+    return head;
+  head -> next = swapPairs(second -> next);
+  second -> next = head;
+  return second;
+}
 
 /**
  * Solution: 345. Reverse Vowels of a String
