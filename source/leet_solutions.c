@@ -5,6 +5,23 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 198. House Robber
+ * Description: You are a professional robber planning to rob houses along a
+   street. Each house has a certain amount of money stashed, the only constraint
+   stopping you from robbing each of them is that adjacent houses have security
+   system connected and it will automatically contact the police if two adjacent
+   houses were broken into on the same night.
+
+               Given a list of non-negative integers representing the amount of
+   money of each house, determine the maximum amount of money you can rob tonight
+   without alerting the police.
+ * Author: Becken
+ * Date: 2016-8-4
+ */
+int rob(int* nums, int numsSize) {
+
+}
+/**
  * Solution: 24. Swap Nodes in Pairs
  * Description: Given a linked list, swap every two adjacent nodes and return its
   head.Your algorithm should use only constant space. You may not modify the
@@ -27,7 +44,8 @@ struct ListNode* swapPairs(struct ListNode* head) {
 
 /**
  * Solution: 345. Reverse Vowels of a String
- * Description: Write a function that takes a string as input and reverse only the vowels of a string.
+ * Description: Write a function that takes a string as input and reverse only
+   the vowels of a string.
  * Example 1: Given s = "hello", return "holle".
  * Example 2: Given s = "leetcode", return "leotcede".
  * Note: The vowels does not include the letter "y".
