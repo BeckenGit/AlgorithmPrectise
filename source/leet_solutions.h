@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 198. House Robber
+int rob(int* nums, int numsSize);
+
 //Solution: 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);
 

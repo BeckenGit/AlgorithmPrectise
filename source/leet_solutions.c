@@ -19,7 +19,17 @@
  * Date: 2016-8-4
  */
 int rob(int* nums, int numsSize) {
+  int* record = (int*)malloc(sizeof(int)*numsSize);
+  int i;
+  for(i = 0; i < numsSize; i++){
+    record[i] = 0;
+  }
 
+}
+rob_houses(int i, int* record, int* nums, int numsSize){
+  if(i == 0 || record[i -1] == 0){
+    rob_houses()
+  }
 }
 /**
  * Solution: 24. Swap Nodes in Pairs
