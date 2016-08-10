@@ -19,18 +19,39 @@
  * Date: 2016-8-4
  */
 int rob(int* nums, int numsSize) {
-  int* record = (int*)malloc(sizeof(int)*numsSize);
-  int i;
-  for(i = 0; i < numsSize; i++){
-    record[i] = 0;
+  if(numsSize == 1)
+    return nums[0];
+  if(numsSize == 0)
+    return 0;
+  int money1 = nums[0] + rob(nums + 2, numsSize - 2);
+  int money2 = rob(nums + 1, numsSize - 1);
+  return money1 > money2 ? money1: money2;
+}
+
+//backtracking
+void rob_record(int* nums, int numsSize, int i, int* money_addr, int* max_money_addr){
+  if(i > numsSize ){
+    if((*money_addr) > (*max_money_addr))
+      (*max_money_addr) = (*money_addr);
+    return;
   }
 
+
+  rob_record(nums, numsSize, i+1, money_addr, max_money_addr);
+
+  (*money_addr)+=nums[i-1];
+  rob_record(nums, numsSize, i+2, money_addr, max_money_addr);
+  (*money_addr)-=nums[i-1];
+  return;
 }
-rob_houses(int i, int* record, int* nums, int numsSize){
-  if(i == 0 || record[i -1] == 0){
-    rob_houses()
-  }
+
+int rob_bt(int* nums, int numsSize){
+  int money = 0;
+  int max_money = 0;
+  rob_record(nums, numsSize, 1, &money, &max_money);
+  return max_money;
 }
+
 /**
  * Solution: 24. Swap Nodes in Pairs
  * Description: Given a linked list, swap every two adjacent nodes and return its

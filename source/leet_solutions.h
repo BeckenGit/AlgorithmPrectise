@@ -1,6 +1,9 @@
 #include <stdbool.h>
 //Solution: 198. House Robber
 int rob(int* nums, int numsSize);
+void rob_record(int* nums, int numsSize, int i, int* money_addr, int* max_money_addr);
+int rob_bt(int* nums, int numsSize);
+
 
 //Solution: 24. Swap Nodes in Pairs
 struct ListNode* swapPairs(struct ListNode* head);

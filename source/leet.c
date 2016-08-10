@@ -5,10 +5,9 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[5] = {1, 2, 3, 4, 5};
-	int numsSize = 5;
-	struct ListNode* head = ArrayToList(nums, numsSize);
-	head = swapPairs(head);
-	printList(head);
+	int nums[3] = {1, 2, 3};
+	int numsSize = 3;
+
+	printf("%d\n", rob_bt(nums, numsSize));
 	return 0;
 }
