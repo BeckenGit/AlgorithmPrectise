@@ -5,9 +5,11 @@
 #include "leet_solutions.h"
 
 int main() {
-	int nums[3] = {1, 2, 3};
-	int numsSize = 3;
-
-	printf("%d\n", rob_bt(nums, numsSize));
+	int num;
+	scanf("%d", &num);
+	if(isPowerOfFour(num))
+		printf("yes!\n");
+	else
+		printf("no!\n");
 	return 0;
 }

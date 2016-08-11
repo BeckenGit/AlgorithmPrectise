@@ -1,4 +1,7 @@
 #include <stdbool.h>
+// Solution: 342. Power of Four
+bool isPowerOfFour(int num);
+
 //Solution: 198. House Robber
 int rob(int* nums, int numsSize);
 void rob_record(int* nums, int numsSize, int i, int* money_addr, int* max_money_addr);

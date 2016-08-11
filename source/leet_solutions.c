@@ -5,6 +5,25 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 342. Power of Four
+ * Description: Given an integer (signed 32 bits), write a function to check
+   whether it is a power of 4.
+
+ * Example: Given num = 16, return true. Given num = 5, return false.
+ * Author: Becken
+ * Date: 2016-8-11
+ */
+bool isPowerOfFour(int num) {
+  int power_temp = 1;
+  while(power_temp <= (1<<30) && power_temp > 0 && power_temp <= num){
+    if(power_temp == num)
+      return true;
+    power_temp *= 4;
+  }
+  return false;
+}
+
+/**
  * Solution: 198. House Robber
  * Description: You are a professional robber planning to rob houses along a
    street. Each house has a certain amount of money stashed, the only constraint
@@ -16,7 +35,7 @@
    money of each house, determine the maximum amount of money you can rob tonight
    without alerting the police.
  * Author: Becken
- * Date: 2016-8-4
+ * Date: 2016-8-10
  */
 int rob(int* nums, int numsSize) {
   if(numsSize == 1)
