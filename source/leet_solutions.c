@@ -5,6 +5,83 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 107. Binary Tree Level Order Traversal II
+ * Description: Given a binary tree, return the bottom-up level order traversal
+   of its nodes' values. (ie, from left to right, level by level from leaf to root).
+
+ * For example: Given binary tree [3,9,20,null,null,15,7],
+     3
+    / \
+   9  20
+     /  \
+    15   7
+  return its bottom-up level order traversal as:
+  [
+   [15,7],
+   [9,20],
+   [3]
+  ]
+ * Author: Becken
+ * Date: 2016-8-12
+ */
+int** levelOrderBottom(struct TreeNode* root, int** columnSizes, int* returnSize) {
+  struct TreeNode* nodes[MAXNUM];
+  struct TreeNode* node;
+  int high[MAXNUM];
+  int head = -1;
+  int tail = -1;
+  int cur;
+
+  //add root
+  if(root != NULL){
+    tail++;
+    nodes[tail] = root;
+    high[tail] = 1;
+  }
+
+
+
+
+  while(head != tail){
+    head++;
+    cur = head;
+    node = nodes[cur];
+    if(node -> right != NULL){
+      tail++;
+      nodes[tail] = node -> right;
+      high[tail] = high[cur]+1;
+    }
+    if(node -> left != NULL){
+      tail++;
+      nodes[tail] = node -> left;
+      high[tail] = high[cur]+1;
+    }
+  }
+  int i;
+  (*returnSize) = 0;
+  int** result = (int**)malloc(sizeof(int*)*(*returnSize));
+  (*columnSizes) = (int*)malloc(sizeof(int)*(*returnSize));
+  int oneLevelSize = 0;
+  int* oneLevel = (int*)malloc(sizeof(int)*oneLevelSize);
+  for(i = tail; i >= 0; i--){
+    oneLevelSize++;
+    oneLevel = (int*)realloc(oneLevel, sizeof(int)*oneLevelSize);
+    oneLevel[oneLevelSize-1] = nodes[i] -> val;
+    if(i == 0 || high[i] != high[i-1]){
+      (*returnSize)++;
+      (*columnSizes) = (int*)realloc((*columnSizes), sizeof(int)*(*returnSize));
+      (*columnSizes)[(*returnSize)-1] = oneLevelSize;
+      oneLevelSize = 0;
+      result = (int**)realloc(result, sizeof(int*)*(*returnSize));
+      result[(*returnSize)-1] = oneLevel;
+      oneLevel = (int*)malloc(sizeof(int)*oneLevelSize);
+    }
+  }
+  return result;
+}
+
+
+/**
  * Solution: 342. Power of Four
  * Description: Given an integer (signed 32 bits), write a function to check
    whether it is a power of 4.

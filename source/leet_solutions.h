@@ -1,4 +1,7 @@
 #include <stdbool.h>
+// Solution: 107. Binary Tree Level Order Traversal II
+int** levelOrderBottom(struct TreeNode* root, int** columnSizes, int* returnSize);
+
 // Solution: 342. Power of Four
 bool isPowerOfFour(int num);
 
