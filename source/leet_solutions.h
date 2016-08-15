@@ -1,4 +1,15 @@
 #include <stdbool.h>
+//Solution: 66. Plus One
+int passOne(int* digits, int digitsSize);
+int* plusOne(int* digits, int digitsSize, int* returnSize);
+
+//Solution: 101. Symmetric Tree
+bool isSame(struct TreeNode* left, struct TreeNode* right);
+bool isSymmetric(struct TreeNode* root);
+
+//Solution: 27. Remove Element
+int removeElement(int* nums, int numsSize, int val);
+
 // Solution: 107. Binary Tree Level Order Traversal II
 int** levelOrderBottom(struct TreeNode* root, int** columnSizes, int* returnSize);
 

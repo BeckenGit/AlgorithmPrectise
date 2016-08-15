@@ -5,6 +5,104 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 66. Plus One
+ * Description: Given a non-negative number represented as an array of digits,
+   plus one to the number.
+                The digits are stored such that the most significant digit is at
+   the head of the list.
+ * Author: Becken
+ * Date: 2016-8-15
+ */
+int passOne(int* digits, int digitsSize){
+     int i = digitsSize-1;
+     while(digits[i] == 9 && i >= 0){
+         i--;
+     }
+     return digitsSize-i-1;
+ }
+
+ int* plusOne(int* digits, int digitsSize, int* returnSize) {
+     int passOneNum = passOne(digits, digitsSize);
+     int i;
+     (*returnSize) = digitsSize;
+     if(passOneNum == 0){
+         digits[digitsSize-1]++;
+         return digits;
+     }
+     else if(passOneNum < digitsSize){
+         digits[digitsSize-passOneNum-1]++;
+         for(i = digitsSize-passOneNum; i < digitsSize; i++){
+             digits[i] = 0;
+         }
+         return digits;
+     }
+     else{
+         (*returnSize)++;
+         digits = (int*)malloc(sizeof(int)*(*returnSize));
+         digits[0] = 1;
+         for(i = 1; i < (*returnSize); i++)
+             digits[i] = 0;
+         return digits;
+     }
+ }
+/**
+ * Solution: 101. Symmetric Tree
+ * Description: Given a binary tree, check whether it is a mirror of itself (ie,
+   symmetric around its center).
+ * Example: this binary tree [1,2,2,3,4,4,3] is symmetric:
+      1
+     / \
+    2   2
+   / \ / \
+  3  4 4  3
+  But the following [1,2,2,null,3,null,3] is not:
+      1
+     / \
+    2   2
+     \   \
+     3    3
+ * Author: Becken
+ * Date: 2016-8-15
+ */
+ bool isSame(struct TreeNode* left, struct TreeNode* right){
+     if(left == NULL && right == NULL)
+         return true;
+     else if(left == NULL || right == NULL)
+         return false;
+     else
+         return (left -> val == right -> val) && isSame(left -> left, right -> right) && isSame(left -> right, right -> left);
+ }
+
+ bool isSymmetric(struct TreeNode* root) {
+     if(root == NULL)
+         return true;
+     else
+         return isSame(root -> left, root -> right);
+ }
+
+/**
+ * Solution: 27. Remove Element
+ * Description: Given an array and a value, remove all instances of that value
+   in place and return the new length.Do not allocate extra space for another
+   array, you must do this in place with constant memory.The order of elements
+   can be changed. It doesn't matter what you leave beyond the new length.
+ * Example: Given input array nums = [3,2,2,3], val = 3 Your function should
+   return length = 2, with the first two elements of nums being 2.
+ * Author: Becken
+ * Date: 2016-8-13
+ */
+int removeElement(int* nums, int numsSize, int val) {
+  int remove_num = 0;
+  int i;
+  for(i = 0; i < numsSize; i++){
+    if(nums[i] == val)
+      remove_num++;
+    else if(remove_num > 0)
+      nums[i-remove_num] = nums[i];
+  }
+  return numsSize-remove_num;
+}
+/**
  * Solution: 107. Binary Tree Level Order Traversal II
  * Description: Given a binary tree, return the bottom-up level order traversal
    of its nodes' values. (ie, from left to right, level by level from leaf to root).
