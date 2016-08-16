@@ -1,4 +1,7 @@
 #include <stdbool.h>
+//Solution: 118. Pascal's Triangle
+int** generate(int numRows, int** columnSizes);
+
 //Solution: 66. Plus One
 int passOne(int* digits, int digitsSize);
 int* plusOne(int* digits, int digitsSize, int* returnSize);

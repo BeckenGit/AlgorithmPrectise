@@ -5,6 +5,57 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 118. Pascal's Triangle
+ * Description: Given numRows, generate the first numRows of Pascal's triangle.
+ * Example, given numRows = 5,
+   Return
+
+   [
+        [1],
+       [1,1],
+      [1,2,1],
+     [1,3,3,1],
+    [1,4,6,4,1]
+   ]
+ * Author: Becken
+ * Date: 2016-8-16
+ */
+int** generate(int numRows, int** columnSizes) {
+  int** result = (int**)malloc(sizeof(int*)*numRows);
+  (*columnSizes) = (int*)malloc(0);
+  int* level;
+  int i, j;
+  for(i = 0; i < numRows; i++){
+    if(i == 0){
+      (*columnSizes) = (int*)realloc((*columnSizes), sizeof(int)*(i+1));
+      (*columnSizes)[i] = i+1;
+      level = (int*)malloc(sizeof(int)*((*columnSizes)[i]));
+      level[0] = 1;
+      result[0] = level;
+    }
+    else if(i == 1){
+      (*columnSizes) = (int*)realloc((*columnSizes), sizeof(int)*(i+1));
+      (*columnSizes)[i] = i+1;
+      level = (int*)malloc(sizeof(int)*((*columnSizes)[i]));
+      level[0] = 1;
+      level[1] = 1;
+      result[1] = level;
+    }
+    else{
+      (*columnSizes) = (int*)realloc((*columnSizes), sizeof(int)*(i+1));
+      (*columnSizes)[i] = i+1;
+      level = (int*)malloc(sizeof(int)*((*columnSizes)[i]));
+      level[0] = 1;
+      level[i] = 1;
+      for(j = 1; j < i; j++)
+        level[j] = result[i-1][j-1] + result[i-1][j];
+      result[i] = level;
+    }
+  }
+  return result;
+}
+
+/**
  * Solution: 66. Plus One
  * Description: Given a non-negative number represented as an array of digits,
    plus one to the number.
