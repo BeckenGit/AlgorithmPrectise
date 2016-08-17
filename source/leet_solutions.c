@@ -5,6 +5,35 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 26. Remove Duplicates from Sorted Array (Time Limit Exceeded)
+ * Description: Given a sorted array, remove the duplicates in place such that
+   each element appear only once and return the new length.
+                Do not allocate extra space for another array, you must do this
+   in place with constant memory.
+
+ * Example, Given input array nums = [1,1,2], Your function should return length
+   = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't
+   matter what you leave beyond the new length.
+ * Author: Becken
+ * Date: 2016-8-17
+ */
+int removeDuplicates(int* nums, int numsSize) {
+  int i, j;
+  int dupNumTemp = 0;
+  int result = numsSize;
+  for(i = 0; i < result-1; i++){
+    for(j = i+1; j < result; j++){
+      if(nums[j] == nums[i])
+        dupNumTemp++;
+      else
+        nums[j-dupNumTemp] = nums[j];
+    }
+    result-=dupNumTemp;
+    dupNumTemp = 0;
+  }
+  return result;
+}
+/**
  * Solution: 118. Pascal's Triangle
  * Description: Given numRows, generate the first numRows of Pascal's triangle.
  * Example, given numRows = 5,
