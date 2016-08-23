@@ -33,6 +33,21 @@ int removeDuplicates(int* nums, int numsSize) {
   }
   return result;
 }
+
+int removeDuplicates1(int* nums, int numsSize) {
+  int i;
+  int result = numsSize;
+  dipNum = nums[0];
+  for(i = 1; i < numsSize; i++){
+    if(nums[i] == dipNum)
+      result--;
+    else{
+      nums[i-count] = nums[i];
+      dupIndex = i;
+    }
+  }
+  return result;
+}
 /**
  * Solution: 118. Pascal's Triangle
  * Description: Given numRows, generate the first numRows of Pascal's triangle.
