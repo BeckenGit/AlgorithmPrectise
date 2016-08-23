@@ -5,6 +5,99 @@
 #define MAXNUM 100000
 #define INF 2147483647
 /**
+ * Solution: 102. Binary Tree Level Order Traversal
+ * Description: Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
+
+ * For example: Given binary tree [3,9,20,null,null,15,7],
+      3
+     / \
+    9  20
+      /  \
+     15   7
+  return its level order traversal as:
+  [
+    [3],
+    [9,20],
+    [15,7]
+  ]
+ * Author: Becken
+ * Date: 2016-8-23
+ */
+/**
+ * Return an array of arrays of size *returnSize.
+ * The sizes of the arrays are returned as *columnSizes array.
+ * Note: Both returned array and *columnSizes array must be malloced, assume caller calls free().
+ */
+ struct NodeAndHigh {
+   struct TreeNode* node;
+   int high;
+ };
+ int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize) {
+   //init variable
+   (*returnSize) = 0;
+   int** result = (int**)malloc(sizeof(int*)*(*returnSize));
+   (*columnSizes) = (int*)malloc(sizeof(int)*0);
+
+   //deal special case
+   if(root == NULL)
+     return NULL;
+
+   //init a queue
+   struct NodeAndHigh* queue = (struct NodeAndHigh*)malloc(sizeof(struct NodeAndHigh)*0);
+   int head = 0;
+   int tail = 0;
+
+   //add root to queue
+   tail++;
+   queue = (struct NodeAndHigh*)realloc(queue, sizeof(struct NodeAndHigh)*tail);
+   queue[tail-1].node = root;
+   queue[tail-1].high = 1;
+
+   struct NodeAndHigh oneNode;
+   while(head != tail){
+
+     //pop a node
+     oneNode = queue[head];
+
+     head++;
+     if(oneNode.node -> left != NULL){
+       //add a left node
+       tail++;
+       queue = (struct NodeAndHigh*)realloc(queue, sizeof(struct NodeAndHigh)*tail);
+       queue[tail-1].node = oneNode.node -> left;
+       queue[tail-1].high = oneNode.high + 1;
+     }
+     if(oneNode.node -> right != NULL){
+       //add a node right node
+       tail++;
+       queue = (struct NodeAndHigh*)realloc(queue, sizeof(struct NodeAndHigh)*tail);
+       queue[tail-1].node = oneNode.node -> right;
+       queue[tail-1].high = oneNode.high + 1;
+     }
+   }
+
+   int i, oneLevelSize;
+   oneLevelSize = 0;
+
+   int* oneLevel = (int*)malloc(sizeof(int)*0);
+   for(i = 0; i < tail; i++){
+     oneLevelSize++;
+     oneLevel = (int*)realloc(oneLevel, sizeof(int)*oneLevelSize);
+     oneLevel[oneLevelSize-1] = queue[i].node -> val;
+     if(i == tail-1 || queue[i].high != queue[i+1].high){
+       (*returnSize)++;
+       result = (int**)realloc(result, sizeof(int*)*(*returnSize));
+       (*columnSizes) = (int*)realloc((*columnSizes), sizeof(int)*(*returnSize));
+       result[(*returnSize)-1] = oneLevel;
+       oneLevel = (int*)malloc(sizeof(int)*0);
+       (*columnSizes)[(*returnSize)-1] = oneLevelSize;
+       oneLevelSize = 0;
+     }
+   }
+
+   return result;
+ }
+/**
  * Solution: 26. Remove Duplicates from Sorted Array (Time Limit Exceeded)
  * Description: Given a sorted array, remove the duplicates in place such that
    each element appear only once and return the new length.
@@ -34,20 +127,6 @@ int removeDuplicates(int* nums, int numsSize) {
   return result;
 }
 
-int removeDuplicates1(int* nums, int numsSize) {
-  int i;
-  int result = numsSize;
-  dipNum = nums[0];
-  for(i = 1; i < numsSize; i++){
-    if(nums[i] == dipNum)
-      result--;
-    else{
-      nums[i-count] = nums[i];
-      dupIndex = i;
-    }
-  }
-  return result;
-}
 /**
  * Solution: 118. Pascal's Triangle
  * Description: Given numRows, generate the first numRows of Pascal's triangle.

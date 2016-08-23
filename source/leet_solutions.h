@@ -1,4 +1,10 @@
 #include <stdbool.h>
+//Solution: 102. Binary Tree Level Order Traversal
+int** levelOrder(struct TreeNode* root, int** columnSizes, int* returnSize);
+
+// Solution: 26. Remove Duplicates from Sorted Array (Time Limit Exceeded)
+int removeDuplicates(int* nums, int numsSize);
+
 //Solution: 118. Pascal's Triangle
 int** generate(int numRows, int** columnSizes);
 
